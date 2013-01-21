@@ -4,14 +4,12 @@ test-mode interface for git(tig)風を
 unite sourceで書いてみました。
 
 ## INSTALL
-***
 
 ```vim
-NeoBundle ''
+NeoBundle 'Kocha/vim-unite-tig'
 ```
 
 ## USAGE
-***
 
 .gitが存在するディレクトリに移動し、
 
@@ -20,7 +18,6 @@ NeoBundle ''
 ```
 
 ## EXAMPLE
-***
 
 ```vim
 " 表示する数を 20に指定 (defalut:50)
