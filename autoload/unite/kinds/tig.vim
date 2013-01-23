@@ -1,7 +1,7 @@
 "=============================================================================
 " FILE: tig.vim
 " AUTHOR:  Kocha <kocha.lsifrontend@gmail.com>
-" Last Modified: 2013/01/21.
+" Last Modified: 2013/01/24.
 " License: MIT license {{{
 "     Permission is hereby granted, free of charge, to any person obtaining
 "     a copy of this software and associated documentation files (the
@@ -22,7 +22,7 @@
 "     TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 "     SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 " }}}
-" Version: 0.1.0
+" Version: 0.1.1
 "=============================================================================
 
 let s:save_cpo = &cpo
@@ -99,6 +99,23 @@ function! s:kind.action_table.view.func(candidates)
   silent 1 delete _
   redraw
   " }}}
+
+  return
+
+endfunction
+" }}}
+
+"action : preview {{{
+let s:kind.action_table.preview = {
+  \ 'description' : 'preview information(git diff)',
+  \ 'is_selectable' : 1,
+  \ 'is_quit' : 0,
+  \ 'is_invalidate_cache' : 0,
+  \}
+function! s:kind.action_table.preview.func(candidates)
+  call s:kind.action_table.view.func(a:candidates)
+
+  execute 'wincmd k'
 
   return
 

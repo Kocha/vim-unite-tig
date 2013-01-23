@@ -28,5 +28,8 @@ let g:unite_tig_default_date_format = 'relative'
 
 " ,ut にて起動
 nnoremap <silent> ,ut :<C-u>Unite tig -no-split<CR>
+
+" 選択時に自動でdiff表示する場合
+nnoremap <silent> ,uta :<C-u>Unite tig -no-split -auto-preview<CR>
 ```
 
