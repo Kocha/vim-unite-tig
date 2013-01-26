@@ -1,7 +1,7 @@
 "=============================================================================
 " FILE: tig.vim
 " AUTHOR:  Kocha <kocha.lsifrontend@gmail.com>
-" Last Modified: 2013/01/21.
+" Last Modified: 2013/01/27.
 " License: MIT license {{{
 "     Permission is hereby granted, free of charge, to any person obtaining
 "     a copy of this software and associated documentation files (the
@@ -22,7 +22,7 @@
 "     TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 "     SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 " }}}
-" Version: 0.1.0
+" Version: 0.1.1
 "=============================================================================
 
 let s:save_cpo = &cpo
@@ -171,7 +171,7 @@ function! tig#system_with_specifics(param)
     call tig#print('Not a git repository')
     call tig#print('Specify directory of git repository (and change current directory of this window)')
     call tig#print('current  : ' . getcwd())
-    execute printf('lcd %s', s:input('change to: ', getcwd()))
+    execute printf('lcd %s', s:input('change to: ', getcwd()), "file")
     return tig#system_with_specifics(a:param)
   endif
 
