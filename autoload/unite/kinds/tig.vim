@@ -1,7 +1,7 @@
 "=============================================================================
 " FILE: tig.vim
 " AUTHOR:  Kocha <kocha.lsifrontend@gmail.com>
-" Last Modified: 2013/01/24.
+" Last Modified: 2013/02/08.
 " License: MIT license {{{
 "     Permission is hereby granted, free of charge, to any person obtaining
 "     a copy of this software and associated documentation files (the
@@ -121,6 +121,66 @@ function! s:kind.action_table.preview.func(candidates)
 
 endfunction
 " }}}
+
+" action : patch {{{
+let s:kind.action_table.patch = {
+  \ 'description' : 'make patch file',
+  \ 'is_selectable' : 1,
+  \ 'is_quit' : 1,
+  \ 'is_invalidate_cache' : 0,
+  \}
+function! s:kind.action_table.patch.func(candidates)
+  if s:is_graph_only_line(a:candidates[0])
+    \ || len(a:candidates) > 1 && s:is_graph_only_line(a:candidates[1])
+    call tig#print('graph only line')
+    return
+  endif
+
+  let from  = ''
+  let to    = ''
+  let files = [a:candidates[0].action__file]
+  if len(a:candidates) == 1
+    let to   = a:candidates[0].action__data.hash
+    let from = a:candidates[0].action__data.parent_hash
+  elseif len(a:candidates) == 2
+    let to   = a:candidates[0].action__data.hash
+    let from = a:candidates[1].action__data.hash
+  else
+    call unite#print_error('too many commits selected')
+  endif
+  let difflog = s:specify({'from' : from, 'to' : to, 'files' : files})
+
+  if !strlen(difflog)
+    call tig#print('no difference')
+    return
+  endif
+
+  "==============================================
+  " Open Buffer {{{
+  execute 'tabnew'
+  nnoremap <buffer> q <C-w>c
+  setlocal filetype=diff bufhidden=hide buftype=nofile noswapfile
+  " }}}
+
+  "==============================================
+  " Buffer Write {{{
+  silent % delete
+  if &l:fileformat ==# 'dos'
+    let difflog = substitute(difflog, "\r\n", "\n", 'g')
+  endif
+  let difflog = substitute(difflog, "+++ b/", "+++ ", 'g')
+  silent 1 put = difflog
+  silent 1 delete _
+  execute 'global/^[a-z]\|^[A-Z]/d'
+  redraw
+  " }}}
+
+  return
+
+endfunction
+" }}}
+
+"====================================================================
 
 function! s:escape_file_pattern(pat)
   return join(map(split(a:pat, '\zs'), '"[".v:val."]"'), '')

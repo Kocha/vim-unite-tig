@@ -26,6 +26,10 @@ test-mode interface for git(tig) 風な unite source。
 	
 	" 選択時に自動で表示
 	:Unite tig -no-split -auto-preview
+	
+	" patch作成
+	:Unite tig
+	アクション(Key:a)にて「patch」にて diffファイルを作成
 <
 
 ==============================================================================
