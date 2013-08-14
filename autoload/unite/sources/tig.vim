@@ -109,6 +109,9 @@ endif
 if !exists('g:unite_tig_default_date_format')
   let g:unite_tig_default_date_format = 'iso'
 endif
+if !exists('g:unite_tig_default_fold')
+  let g:unite_tig_default_fold = 1
+endif
 let s:pretty_format = "::%H::%P::%an<%ae>[%ad]::%cn<%ce>[%cd]::%s"
 " }}}
 

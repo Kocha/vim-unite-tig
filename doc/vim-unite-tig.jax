@@ -74,5 +74,12 @@ g:unite_tig_default_date_format					*g:unite_tig_default_date_format*
 		let g:unite_tig_default_date_format = iso
 <
 
+g:unite_tig_default_fold						*g:unite_tig_default_fold*
+	diff表示を折り畳むか選択します。
+
+	Default: >
+		let g:unite_tig_default_fold = 1
+<
+
 ==============================================================================
 vim:tw=78:fo=tcq2mM:ts=4:ft=help:norl
