@@ -1,7 +1,7 @@
 "=============================================================================
 " FILE: tig.vim
 " AUTHOR:  Kocha <kocha.lsifrontend@gmail.com>
-" Last Modified: 15-Aug-2013.
+" Last Modified: 16-Aug-2013.
 " License: MIT license {{{
 "     Permission is hereby granted, free of charge, to any person obtaining
 "     a copy of this software and associated documentation files (the
@@ -103,7 +103,7 @@ function! s:kind.action_table.view.func(candidates)
   "==============================================
   " Fold {{{
   if g:unite_tig_default_fold == 1
-    setlocal foldenable
+    setlocal nofoldenable
     setlocal foldmethod=expr
     setlocal foldexpr=getline(v:lnum)=~'^diff'?'>1':'='
     nnoremap <buffer> t zi
