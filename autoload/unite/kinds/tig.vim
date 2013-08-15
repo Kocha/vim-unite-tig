@@ -1,7 +1,7 @@
 "=============================================================================
 " FILE: tig.vim
 " AUTHOR:  Kocha <kocha.lsifrontend@gmail.com>
-" Last Modified: 14-Aug-2013.
+" Last Modified: 15-Aug-2013.
 " License: MIT license {{{
 "     Permission is hereby granted, free of charge, to any person obtaining
 "     a copy of this software and associated documentation files (the
@@ -22,7 +22,7 @@
 "     TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 "     SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 " }}}
-" Version: 0.1.2
+" Version: 0.1.3
 "=============================================================================
 
 let s:save_cpo = &cpo
@@ -106,6 +106,7 @@ function! s:kind.action_table.view.func(candidates)
     setlocal foldenable
     setlocal foldmethod=expr
     setlocal foldexpr=getline(v:lnum)=~'^diff'?'>1':'='
+    nnoremap <buffer> t zi
   endif
   " }}}
 
