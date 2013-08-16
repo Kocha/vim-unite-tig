@@ -78,7 +78,7 @@ g:unite_tig_default_fold						*g:unite_tig_default_fold*
 	diff表示を折り畳むか選択します。
 
 	Default: >
-		let g:unite_tig_default_fold = 1
+		let g:unite_tig_default_fold = 0
 <
 
 ==============================================================================

@@ -1,7 +1,7 @@
 "=============================================================================
 " FILE: tig.vim
 " AUTHOR:  Kocha <kocha.lsifrontend@gmail.com>
-" Last Modified: 14-Aug-2013.
+" Last Modified: 16-Aug-2013.
 " License: MIT license {{{
 "     Permission is hereby granted, free of charge, to any person obtaining
 "     a copy of this software and associated documentation files (the
@@ -110,7 +110,7 @@ if !exists('g:unite_tig_default_date_format')
   let g:unite_tig_default_date_format = 'iso'
 endif
 if !exists('g:unite_tig_default_fold')
-  let g:unite_tig_default_fold = 1
+  let g:unite_tig_default_fold = 0
 endif
 let s:pretty_format = "::%H::%P::%an<%ae>[%ad]::%cn<%ce>[%cd]::%s"
 " }}}

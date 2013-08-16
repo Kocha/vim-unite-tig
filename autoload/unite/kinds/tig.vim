@@ -103,11 +103,13 @@ function! s:kind.action_table.view.func(candidates)
   "==============================================
   " Fold {{{
   if g:unite_tig_default_fold == 1
+    setlocal foldenable
+  else
     setlocal nofoldenable
-    setlocal foldmethod=expr
-    setlocal foldexpr=getline(v:lnum)=~'^diff'?'>1':'='
-    nnoremap <buffer> t zi
   endif
+  setlocal foldmethod=expr
+  setlocal foldexpr=getline(v:lnum)=~'^diff'?'>1':'='
+  nnoremap <buffer> t zi
   " }}}
 
   return
